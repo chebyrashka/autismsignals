@@ -74,6 +74,7 @@ const currentIndex = ref(0);
 const stage = ref<'quiz' | 'results'>('quiz');
 const reflectionNotes = ref('');
 const copied = ref(false);
+const shouldScrollQuestionIntoView = ref(false);
 
 const currentQuestion = computed(() => questions[currentIndex.value]);
 const currentAnswer = computed(() => answers.value[currentIndex.value]);
@@ -243,7 +244,20 @@ function continueForward() {
     return;
   }
 
+  shouldScrollQuestionIntoView.value = true;
   currentIndex.value += 1;
+}
+
+function handlePanelAfterEnter(element: Element) {
+  if (!shouldScrollQuestionIntoView.value || stage.value !== 'quiz') {
+    return;
+  }
+
+  shouldScrollQuestionIntoView.value = false;
+
+  if (element instanceof HTMLElement) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function reviewAnswers() {
@@ -369,7 +383,7 @@ watch(
     </aside>
 
     <div class="assessment-main">
-      <transition name="panel" mode="out-in">
+      <transition name="panel" mode="out-in" @after-enter="handlePanelAfterEnter">
         <article v-if="stage === 'quiz'" :key="currentQuestion.id" class="question-card">
           <div class="question-meta">
             <p>Question {{ currentIndex + 1 }} of {{ questions.length }}</p>
@@ -924,6 +938,10 @@ watch(
   .button {
     width: 100%;
     justify-content: center;
+  }
+
+  .answer-caption {
+    display: none;
   }
 }
 </style>

@@ -333,6 +333,7 @@ body::before {
 }
 
 .section-heading {
+  margin-inline: 1rem;
   margin-bottom: 2rem;
 }
 

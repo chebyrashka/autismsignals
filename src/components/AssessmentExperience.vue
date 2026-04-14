@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
 import { questions, responseOptions } from '../data/questions';
+import { trackEvent } from '../lib/analytics';
 
 type ScoreBand = {
   title: string;
@@ -75,6 +76,7 @@ const stage = ref<'quiz' | 'results'>('quiz');
 const reflectionNotes = ref('');
 const copied = ref(false);
 const shouldScrollQuestionIntoView = ref(false);
+const completionTracked = ref(false);
 
 const currentQuestion = computed(() => questions[currentIndex.value]);
 const currentAnswer = computed(() => answers.value[currentIndex.value]);
@@ -221,7 +223,14 @@ const summaryText = computed(() => {
 });
 
 function setAnswer(value: number) {
+  const isStartingReflection =
+    answers.value[currentIndex.value] === null && answeredCount.value === 0;
+
   answers.value[currentIndex.value] = value;
+
+  if (isStartingReflection) {
+    trackEvent('Start Reflection');
+  }
 }
 
 function goBack() {
@@ -240,6 +249,11 @@ function continueForward() {
   }
 
   if (currentIndex.value === questions.length - 1) {
+    if (!completionTracked.value) {
+      trackEvent('Assessment Completed');
+      completionTracked.value = true;
+    }
+
     stage.value = 'results';
     return;
   }
@@ -272,11 +286,13 @@ function resetAll() {
   stage.value = 'quiz';
   reflectionNotes.value = '';
   copied.value = false;
+  completionTracked.value = false;
   localStorage.removeItem(storageKey);
 }
 
 async function copySummary() {
   await navigator.clipboard.writeText(summaryText.value);
+  trackEvent('Summary Copied');
   copied.value = true;
   window.setTimeout(() => {
     copied.value = false;
@@ -314,6 +330,7 @@ onMounted(() => {
 
     if (parsed.stage === 'results' && answeredCount.value === questions.length) {
       stage.value = 'results';
+      completionTracked.value = true;
     }
   } catch {
     localStorage.removeItem(storageKey);

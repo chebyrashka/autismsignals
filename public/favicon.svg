@@ -1,6 +1,15 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="20" fill="#0E4E4D"/>
-  <path d="M32 13C21.5066 13 13 21.5066 13 32C13 42.4934 21.5066 51 32 51C42.4934 51 51 42.4934 51 32C51 21.5066 42.4934 13 32 13Z" fill="#F7F3EB"/>
-  <path d="M32 19L37.6918 30.3082L49 36L37.6918 41.6918L32 53L26.3082 41.6918L15 36L26.3082 30.3082L32 19Z" fill="#2D8C82"/>
-  <circle cx="32" cy="36" r="4" fill="#0E4E4D"/>
+  <defs>
+    <clipPath id="favicon-clip">
+      <rect width="64" height="64" rx="12" />
+    </clipPath>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#0E4E4D" />
+  <g clip-path="url(#favicon-clip)">
+    <circle cx="48" cy="16" r="3.5" fill="#F7F3EB" />
+    <circle cx="48" cy="16" r="13" stroke="#F7F3EB" stroke-width="3" opacity="0.96" />
+    <circle cx="48" cy="16" r="22" stroke="#F7F3EB" stroke-width="3" opacity="0.86" />
+    <circle cx="48" cy="16" r="31" stroke="#F7F3EB" stroke-width="3" opacity="0.72" />
+    <circle cx="48" cy="16" r="40" stroke="#F7F3EB" stroke-width="3" opacity="0.54" />
+  </g>
 </svg>

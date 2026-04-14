@@ -45,6 +45,27 @@ If you use Plausible or GA4 on Netlify, add the same environment variables in:
 - Site configuration
 - Environment variables
 
+### Plausible custom events
+
+This project now emits these Plausible custom events:
+
+- `Start Reflection`
+- `Assessment Completed`
+- `Summary Copied`
+- `Clicked Resource`
+
+`Clicked Resource` includes a non-sensitive custom property:
+
+- `resource`
+
+To see these in Plausible:
+
+1. Open your site in Plausible
+2. Go to `Site Settings` -> `Goals`
+3. Add a `Custom event` goal for each event name above
+
+For `Clicked Resource`, you can optionally narrow the goal using the `resource` property if you want separate goals for each resource card.
+
 ## GitHub
 
 This folder should live in its own git repo, separate from the unrelated parent repo on this machine.

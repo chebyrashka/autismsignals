@@ -1,0 +1,54 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F5F1EA"/>
+  <rect width="1200" height="630" fill="url(#bg-grid)" opacity="0.14"/>
+  <circle cx="172" cy="96" r="180" fill="url(#amber-glow)" />
+  <circle cx="1028" cy="114" r="220" fill="url(#teal-glow)" />
+
+  <rect x="56" y="52" width="1088" height="526" rx="34" fill="#F8F5EF"/>
+  <rect x="56.5" y="52.5" width="1087" height="525" rx="33.5" stroke="#E2D9CE"/>
+
+  <g opacity="0.86">
+    <circle cx="1008" cy="132" r="22" fill="#F7F3EB"/>
+    <circle cx="1008" cy="132" r="76" stroke="#F7F3EB" stroke-width="12"/>
+    <circle cx="1008" cy="132" r="130" stroke="#F7F3EB" stroke-width="12" opacity="0.84"/>
+    <circle cx="1008" cy="132" r="184" stroke="#F7F3EB" stroke-width="12" opacity="0.68"/>
+    <circle cx="1008" cy="132" r="238" stroke="#F7F3EB" stroke-width="12" opacity="0.52"/>
+  </g>
+
+  <text x="110" y="136" fill="#0E4E4D" font-family="Avenir Next, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="7.2">
+    ADULT AUTISM TRAIT SELF-CHECK
+  </text>
+
+  <text x="110" y="258" fill="#152330" font-family="Iowan Old Style, Palatino Linotype, Book Antiqua, serif" font-size="110" font-weight="700" letter-spacing="-4.8">
+    Autism
+  </text>
+  <text x="110" y="358" fill="#152330" font-family="Iowan Old Style, Palatino Linotype, Book Antiqua, serif" font-size="110" font-weight="700" letter-spacing="-4.8">
+    Signals
+  </text>
+
+  <text x="110" y="444" fill="#384857" font-family="Avenir Next, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="500">
+    A calm, private self-check for adults exploring
+  </text>
+  <text x="110" y="494" fill="#384857" font-family="Avenir Next, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="500">
+    whether their experiences overlap with common
+  </text>
+  <text x="110" y="544" fill="#384857" font-family="Avenir Next, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="500">
+    autistic traits.
+  </text>
+
+  <defs>
+    <pattern id="bg-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" stroke="#152330" stroke-opacity="0.32"/>
+    </pattern>
+
+    <radialGradient id="amber-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(172 96) rotate(90) scale(180)">
+      <stop stop-color="#C57F44" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#C57F44" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="teal-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1028 114) rotate(90) scale(220)">
+      <stop stop-color="#0E4E4D" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0E4E4D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

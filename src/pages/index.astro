@@ -159,17 +159,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="resource-grid">
-        <a class="resource-card" href="https://www.cdc.gov/ncbddd/autism/index.html" target="_blank" rel="noreferrer">
+        <a
+          class="resource-card"
+          href="https://www.cdc.gov/ncbddd/autism/index.html"
+          target="_blank"
+          rel="noreferrer"
+          data-analytics-event="Clicked Resource"
+          data-analytics-resource="CDC overview"
+        >
           <strong>CDC overview</strong>
           <span>Signs, screening, treatment, and broader background on autism spectrum disorder.</span>
         </a>
 
-        <a class="resource-card" href="https://www.nichd.nih.gov/health/topics/factsheets/autism" target="_blank" rel="noreferrer">
+        <a
+          class="resource-card"
+          href="https://www.nichd.nih.gov/health/topics/factsheets/autism"
+          target="_blank"
+          rel="noreferrer"
+          data-analytics-event="Clicked Resource"
+          data-analytics-resource="NICHD fact sheet"
+        >
           <strong>NICHD fact sheet</strong>
           <span>Plain-language medical background, including current language around Asperger syndrome.</span>
         </a>
 
-        <a class="resource-card" href="https://www.autism.org.uk/advice-and-guidance/diagnosis/before-diagnosis/signs-that-a-child-or-adult-may-be-autistic" target="_blank" rel="noreferrer">
+        <a
+          class="resource-card"
+          href="https://www.autism.org.uk/advice-and-guidance/diagnosis/before-diagnosis/signs-that-a-child-or-adult-may-be-autistic"
+          target="_blank"
+          rel="noreferrer"
+          data-analytics-event="Clicked Resource"
+          data-analytics-resource="Adult autism signs"
+        >
           <strong>Adult autism signs</strong>
           <span>A nuanced adult-focused signs page that discusses masking, burnout, sensory profile, and lifelong patterns.</span>
         </a>
@@ -180,5 +201,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         United States for immediate mental health crisis help.
       </p>
     </section>
+
+    <script>
+      import { trackEvent } from '../lib/analytics';
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element)) {
+          return;
+        }
+
+        const trackedElement = event.target.closest<HTMLElement>('[data-analytics-event]');
+
+        if (!trackedElement) {
+          return;
+        }
+
+        const eventName = trackedElement.dataset.analyticsEvent;
+
+        if (!eventName) {
+          return;
+        }
+
+        const resource = trackedElement.dataset.analyticsResource;
+        trackEvent(eventName, resource ? { resource } : undefined);
+      });
+    </script>
   </main>
 </BaseLayout>

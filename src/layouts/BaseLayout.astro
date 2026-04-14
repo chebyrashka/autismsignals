@@ -1,18 +1,25 @@
 ---
 import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
 
 type Props = {
   title?: string;
   description?: string;
+  image?: string;
+  noindex?: boolean;
 };
 
 const {
   title = 'Autism Signals | Adult autism trait self-check',
   description = 'A professional self-check for adults exploring whether their experiences overlap with common autistic traits. Informational only, not clinically validated.',
+  image = '/og-card.svg',
+  noindex = false,
 } = Astro.props as Props;
 
 const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const imageUrl = Astro.site ? new URL(image, Astro.site).toString() : image;
 ---
 
 <!doctype html>
@@ -22,13 +29,37 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f5f1ea" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:site_name" content="Autism Signals" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Autism Signals social preview" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     {plausibleDomain && (
-      <script
-        defer
-        data-domain={plausibleDomain}
-        src="https://plausible.io/js/script.js"
-      />
+      <>
+        <script is:inline>
+          {`
+            window.plausible = window.plausible || function () {
+              (window.plausible.q = window.plausible.q || []).push(arguments);
+            };
+          `}
+        </script>
+        <script
+          defer
+          data-domain={plausibleDomain}
+          src="https://plausible.io/js/script.js"
+        />
+      </>
     )}
     {gaMeasurementId && (
       <>
@@ -51,5 +82,6 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   <body>
     <div class="page-chroma" aria-hidden="true"></div>
     <slot />
+    <SiteFooter />
   </body>
 </html>

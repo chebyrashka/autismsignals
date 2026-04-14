@@ -63,6 +63,76 @@ body::before {
   padding: 2rem 0 4rem;
 }
 
+.legal-shell {
+  padding-top: 1.5rem;
+}
+
+.legal-page {
+  position: relative;
+  z-index: 1;
+}
+
+.legal-card {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  border-radius: 2rem;
+  background: var(--surface-strong);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
+}
+
+.legal-card h1 {
+  margin: 0.7rem 0 0;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.legal-intro {
+  margin: 1rem 0 0;
+  max-width: 60ch;
+  color: var(--muted-strong);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.legal-section + .legal-section {
+  margin-top: 1.8rem;
+}
+
+.legal-section h2 {
+  margin: 0 0 0.55rem;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  line-height: 1.12;
+}
+
+.legal-section p {
+  margin: 0;
+  max-width: 65ch;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.legal-section p + p {
+  margin-top: 0.9rem;
+}
+
 .hero,
 .principles,
 .experience-section,
@@ -366,6 +436,50 @@ body::before {
   border-color: rgba(14, 78, 77, 0.24);
 }
 
+.site-footer {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100vw - 2rem));
+  margin: 0 auto 2rem;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid rgba(18, 42, 56, 0.08);
+}
+
+.site-footer__inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.site-footer__title,
+.site-footer__legal {
+  margin: 0;
+}
+
+.site-footer__title {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.site-footer__copy,
+.site-footer__legal {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.15rem;
+}
+
+.site-footer__nav a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
 .support-note {
   margin: 1rem 0 0;
   color: var(--muted);
@@ -424,6 +538,10 @@ body::before {
   .section-heading h2 {
     max-width: none;
   }
+
+  .site-footer__inner {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 720px) {
@@ -451,5 +569,13 @@ body::before {
 
   .button-link {
     width: 100%;
+  }
+
+  .legal-card {
+    border-radius: 1.5rem;
+  }
+
+  .site-footer {
+    width: min(100vw - 1rem, 1180px);
   }
 }

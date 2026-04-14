@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = 'Autism Signals | Adult autism trait self-check',
+  description = 'A professional self-check for adults exploring whether their experiences overlap with common autistic traits. Informational only, not clinically validated.',
+} = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f1ea" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page-chroma" aria-hidden="true"></div>
+    <slot />
+  </body>
+</html>

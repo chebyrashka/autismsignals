@@ -1,0 +1,184 @@
+---
+import AssessmentExperience from '../components/AssessmentExperience.vue';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <main class="page-shell">
+    <section class="hero reveal">
+      <div class="hero-copy">
+        <p class="eyebrow">Adult autism trait self-check</p>
+        <h1>Autism Signals</h1>
+        <p class="lead">
+          A private self-check for adults who are curious whether their experiences
+          overlap with common autistic traits. It is meant for reflection only.
+        </p>
+        <p class="body-copy">
+          If you came here looking for an Asperger&apos;s assessment, this experience uses
+          current autism-spectrum language while recognizing that some people still
+          identify with the older term. This site is not clinically validated and should
+          not be treated as a medical, psychological, or diagnostic tool.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button-link button-link--primary" href="#assessment">Start the reflection</a>
+          <a class="button-link button-link--secondary" href="#guidance">How to read the result</a>
+        </div>
+
+        <div class="hero-metrics">
+          <article>
+            <strong>16 prompts</strong>
+            <span>Balanced across communication, sensory profile, flexibility, and history.</span>
+          </article>
+          <article>
+            <strong>4 minutes</strong>
+            <span>Short enough to finish, detailed enough to feel grounded.</span>
+          </article>
+          <article>
+            <strong>Private by default</strong>
+            <span>Your responses stay in the browser unless you choose to copy them.</span>
+          </article>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="hero-panel__card hero-panel__card--signal">
+          <div class="hero-panel__content">
+            <p class="eyebrow eyebrow--soft">What this covers</p>
+            <h2>Professional tone, clear boundaries, and useful reflection.</h2>
+            <ul>
+              <li>Clear prompts about social interpretation, masking, routines, sensory profile, and focus.</li>
+              <li>Results that stay careful about uncertainty and never claim to diagnose, validate, or officially screen for autism.</li>
+              <li>Optional note-taking so someone can keep track of patterns, questions, and support needs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-panel__trust">
+          <article class="trust-item">
+            <img class="trust-item__icon" src="/icons/private-browser.svg" alt="" />
+            <div>
+              <strong>Private in browser</strong>
+              <span>Your responses stay local unless you choose to copy them out.</span>
+            </div>
+          </article>
+
+          <article class="trust-item">
+            <img class="trust-item__icon" src="/icons/informational-only.svg" alt="" />
+            <div>
+              <strong>Informational only</strong>
+              <span>Built for reflection, not validation, diagnosis, or official screening.</span>
+            </div>
+          </article>
+
+          <article class="trust-item">
+            <img class="trust-item__icon" src="/icons/time-gentle.svg" alt="" />
+            <div>
+              <strong>Takes about 4 minutes</strong>
+              <span>Short, calm, and easy to complete in one sitting.</span>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </section>
+
+    <section class="principles reveal">
+      <article class="principle-card">
+        <p class="eyebrow eyebrow--soft">Careful by design</p>
+        <h2>Not a validated clinical tool</h2>
+        <p>
+          This experience is intentionally informal. It can help someone notice patterns,
+          but it does not produce an official result, medical advice, or a diagnosis.
+        </p>
+      </article>
+
+      <article class="principle-card">
+        <p class="eyebrow eyebrow--soft">Adult-aware</p>
+        <h2>Built with masking and sensory nuance in mind</h2>
+        <p>
+          Many adults, especially those who have spent years compensating socially, need
+          language that feels more precise than a generic symptom checklist.
+        </p>
+      </article>
+
+      <article class="principle-card">
+        <p class="eyebrow eyebrow--soft">Useful output</p>
+        <h2>Results that help with self-understanding</h2>
+        <p>
+          Instead of a blunt pass or fail, the app highlights which themes were strongest
+          and helps someone capture language for further reading, reflection, and support.
+        </p>
+      </article>
+    </section>
+
+    <section class="experience-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow eyebrow--soft">Reflection experience</p>
+        <h2>Take the self-check now and get a quick reflection summary in just a few minutes.</h2>
+      </div>
+      <AssessmentExperience client:load />
+    </section>
+
+    <section class="guidance reveal" id="guidance">
+      <div class="section-heading">
+        <p class="eyebrow eyebrow--soft">Interpretation guidance</p>
+        <h2>What this tool can and cannot tell someone.</h2>
+      </div>
+
+      <div class="guidance-grid">
+        <article class="guidance-card">
+          <strong>What a higher result means</strong>
+          <p>
+            A higher result means more of the prompts felt familiar. It can suggest that
+            further exploration is worthwhile, but it does not confirm autism or act as an official screen.
+          </p>
+        </article>
+
+        <article class="guidance-card">
+          <strong>Why long-standing patterns matter</strong>
+          <p>
+            Traits that feel lifelong usually matter more in this kind of reflection than
+            changes that only appeared recently during stress or burnout.
+          </p>
+        </article>
+
+        <article class="guidance-card">
+          <strong>Why mixed results still matter</strong>
+          <p>
+            A mixed result can still be meaningful. Many adults resonate strongly with a
+            few domains, such as sensory profile or social fatigue, rather than everything.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="resources reveal">
+      <div class="section-heading">
+        <p class="eyebrow eyebrow--soft">Trusted resources</p>
+        <h2>Good next reads after the questionnaire.</h2>
+      </div>
+
+      <div class="resource-grid">
+        <a class="resource-card" href="https://www.cdc.gov/ncbddd/autism/index.html" target="_blank" rel="noreferrer">
+          <strong>CDC overview</strong>
+          <span>Signs, screening, treatment, and broader background on autism spectrum disorder.</span>
+        </a>
+
+        <a class="resource-card" href="https://www.nichd.nih.gov/health/topics/factsheets/autism" target="_blank" rel="noreferrer">
+          <strong>NICHD fact sheet</strong>
+          <span>Plain-language medical background, including current language around Asperger syndrome.</span>
+        </a>
+
+        <a class="resource-card" href="https://www.autism.org.uk/advice-and-guidance/diagnosis/before-diagnosis/signs-that-a-child-or-adult-may-be-autistic" target="_blank" rel="noreferrer">
+          <strong>Adult autism signs</strong>
+          <span>A nuanced adult-focused signs page that discusses masking, burnout, sensory profile, and lifelong patterns.</span>
+        </a>
+      </div>
+
+      <p class="support-note">
+        If this topic brings up acute distress, use local urgent support or call 988 in the
+        United States for immediate mental health crisis help.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

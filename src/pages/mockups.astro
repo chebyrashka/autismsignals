@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Autism Signals | Visual Mockups"
+  description="Three visual directions for the What this covers panel."
+>
+  <main class="page-shell mockup-shell">
+    <section class="mockup-intro">
+      <p class="eyebrow">Visual Directions</p>
+      <h1>Three mockups for the “What this covers” panel.</h1>
+      <p class="lead">
+        These are side-by-side directions for the top-right card: one brand-led pattern,
+        one ultra-clean texture treatment, and one more editorial composition.
+      </p>
+      <p class="body-copy">
+        My recommendation is the <strong>Signal Wave</strong> direction because it feels
+        distinctive, on-brand with “Autism Signals,” and premium without drifting into
+        stock-photo territory.
+      </p>
+    </section>
+
+    <section class="mockup-grid">
+      <article class="mock-card">
+        <div class="mock-card__head">
+          <span class="mock-badge mock-badge--recommended">Recommended</span>
+          <strong>Signal Wave</strong>
+        </div>
+
+        <div class="mock-cover mock-cover--signal">
+          <div class="mock-cover__content">
+            <p class="eyebrow eyebrow--soft">What this covers</p>
+            <h2>Professional tone, clear boundaries, and useful reflection.</h2>
+            <ul>
+              <li>Clear prompts about social interpretation, masking, routines, sensory profile, and focus.</li>
+              <li>Results that stay careful about uncertainty and never claim to diagnose, validate, or officially screen for autism.</li>
+              <li>Optional note-taking so someone can keep track of patterns, questions, and support needs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mock-note">
+          Best balance of brand identity, calmness, and polish. Feels custom to the
+          product without overwhelming the content.
+        </p>
+      </article>
+
+      <article class="mock-card">
+        <div class="mock-card__head">
+          <span class="mock-badge">Minimal</span>
+          <strong>Paper Texture</strong>
+        </div>
+
+        <div class="mock-cover mock-cover--paper">
+          <div class="mock-cover__content">
+            <p class="eyebrow eyebrow--soft">What this covers</p>
+            <h2>Professional tone, clear boundaries, and useful reflection.</h2>
+            <ul>
+              <li>Clear prompts about social interpretation, masking, routines, sensory profile, and focus.</li>
+              <li>Results that stay careful about uncertainty and never claim to diagnose, validate, or officially screen for autism.</li>
+              <li>Optional note-taking so someone can keep track of patterns, questions, and support needs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mock-note">
+          The safest and most understated option. It keeps the UI very premium while
+          adding only a whisper of pattern and warmth.
+        </p>
+      </article>
+
+      <article class="mock-card">
+        <div class="mock-card__head">
+          <span class="mock-badge">Editorial</span>
+          <strong>Light Panel</strong>
+        </div>
+
+        <div class="mock-cover mock-cover--editorial">
+          <div class="mock-cover__content">
+            <p class="eyebrow eyebrow--soft">What this covers</p>
+            <h2>Professional tone, clear boundaries, and useful reflection.</h2>
+            <ul>
+              <li>Clear prompts about social interpretation, masking, routines, sensory profile, and focus.</li>
+              <li>Results that stay careful about uncertainty and never claim to diagnose, validate, or officially screen for autism.</li>
+              <li>Optional note-taking so someone can keep track of patterns, questions, and support needs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mock-note">
+          More art-directed and magazine-like. This gives the section a stronger visual
+          identity while still avoiding generic people photography.
+        </p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .mockup-shell {
+    padding-top: 2rem;
+  }
+
+  .mockup-intro {
+    max-width: 78ch;
+    margin-bottom: 2rem;
+  }
+
+  .mockup-intro h1 {
+    margin: 0.65rem 0 0;
+    font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .mock-card {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .mock-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    color: var(--ink);
+  }
+
+  .mock-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+    color: var(--muted-strong);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mock-badge--recommended {
+    background: rgba(14, 78, 77, 0.12);
+    color: var(--accent);
+  }
+
+  .mock-cover {
+    position: relative;
+    min-height: 38rem;
+    overflow: hidden;
+    border-radius: 2rem;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.82), rgba(236, 246, 245, 0.88));
+  }
+
+  .mock-cover__content {
+    position: relative;
+    z-index: 2;
+    padding: 1.8rem;
+  }
+
+  .mock-cover h2 {
+    margin: 0.6rem 0 0;
+    font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.02;
+    max-width: 10ch;
+  }
+
+  .mock-cover ul {
+    margin: 1rem 0 0;
+    padding-left: 1.15rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 28ch;
+  }
+
+  .mock-cover li + li {
+    margin-top: 0.8rem;
+  }
+
+  .mock-note {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .mock-cover--signal {
+    background:
+      radial-gradient(circle at 16% 18%, rgba(197, 127, 68, 0.16), transparent 26%),
+      linear-gradient(155deg, rgba(255, 255, 255, 0.82), rgba(236, 246, 245, 0.88));
+  }
+
+  .mock-cover--signal::before {
+    content: '';
+    position: absolute;
+    inset: -10% -14% auto auto;
+    width: 78%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      repeating-radial-gradient(
+        circle at center,
+        rgba(14, 78, 77, 0.08) 0 2px,
+        transparent 2px 26px
+      );
+    opacity: 0.7;
+    transform: translate(6%, -2%);
+  }
+
+  .mock-cover--signal::after {
+    content: '';
+    position: absolute;
+    inset: auto auto 6% -6%;
+    width: 42%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14, 78, 77, 0.12), transparent 72%);
+    filter: blur(2px);
+  }
+
+  .mock-cover--paper {
+    background:
+      radial-gradient(circle at 78% 84%, rgba(14, 78, 77, 0.08), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 239, 231, 0.92));
+  }
+
+  .mock-cover--paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(18, 42, 56, 0.05) 0.8px, transparent 0.8px),
+      linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.18));
+    background-size: 18px 18px, auto;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+  }
+
+  .mock-cover--paper::after {
+    content: '';
+    position: absolute;
+    inset: 10% 8% auto auto;
+    width: 54%;
+    height: 42%;
+    border-radius: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(197, 127, 68, 0.08));
+    filter: blur(28px);
+  }
+
+  .mock-cover--editorial {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 247, 0.9));
+  }
+
+  .mock-cover--editorial::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 56%;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(14, 78, 77, 0.04)),
+      radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.95), transparent 22%),
+      radial-gradient(circle at 64% 62%, rgba(197, 127, 68, 0.18), transparent 28%),
+      linear-gradient(145deg, rgba(220, 234, 232, 0.9), rgba(241, 233, 222, 0.92));
+  }
+
+  .mock-cover--editorial::after {
+    content: '';
+    position: absolute;
+    inset: 12% 7% 12% 58%;
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(160deg, rgba(255, 255, 255, 0.35), transparent 52%),
+      linear-gradient(180deg, rgba(18, 42, 56, 0.06), rgba(18, 42, 56, 0));
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+      0 20px 36px rgba(16, 31, 43, 0.08);
+  }
+
+  @media (max-width: 1100px) {
+    .mockup-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mock-cover {
+      min-height: 28rem;
+    }
+
+    .mock-cover h2,
+    .mock-cover ul {
+      max-width: none;
+    }
+  }
+</style>

@@ -48,11 +48,9 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).toString() : image;
     {plausibleDomain && (
       <>
         <script is:inline>
-          {`
-            window.plausible = window.plausible || function () {
-              (window.plausible.q = window.plausible.q || []).push(arguments);
-            };
-          `}
+          window.plausible = window.plausible || function () {
+            (window.plausible.q = window.plausible.q || []).push(arguments);
+          };
         </script>
         <script
           defer
@@ -67,13 +65,11 @@ const imageUrl = Astro.site ? new URL(image, Astro.site).toString() : image;
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
         />
-        <script is:inline>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gaMeasurementId}');
-          `}
+        <script is:inline define:vars={{ gaMeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaMeasurementId);
         </script>
       </>
     )}

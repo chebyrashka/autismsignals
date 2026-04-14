@@ -17,6 +17,21 @@ npm run dev
 npm run build
 ```
 
+## Analytics
+
+This project supports two code-based analytics options through public environment variables:
+
+- Plausible
+  - Set `PUBLIC_PLAUSIBLE_DOMAIN=autismsignals.com`
+- Google Analytics 4
+  - Set `PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX`
+
+Only enable the provider you actually want to use.
+
+For local development, copy `.env.example` to `.env` and fill in the value you want.
+
+If you prefer Netlify Web Analytics, you can also enable that directly in the Netlify UI with no code changes.
+
 ## Netlify
 
 - Build command: `npm run build`
@@ -24,6 +39,11 @@ npm run build
 - Node version: `22.12.0`
 
 `netlify.toml` already includes the matching build settings.
+
+If you use Plausible or GA4 on Netlify, add the same environment variables in:
+
+- Site configuration
+- Environment variables
 
 ## GitHub
 

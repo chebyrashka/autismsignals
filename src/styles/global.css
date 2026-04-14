@@ -86,13 +86,17 @@ body::before {
 .legal-back {
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: 0.65rem 0.95rem;
+  gap: 0.45rem;
+  min-height: 2.25rem;
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.8rem;
   border-radius: 999px;
   text-decoration: none;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--line);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .legal-card h1 {
@@ -104,7 +108,7 @@ body::before {
 }
 
 .legal-intro {
-  margin: 1rem 0 0;
+  margin: 1rem 0 1.6rem;
   max-width: 60ch;
   color: var(--muted-strong);
   font-size: 1.08rem;
@@ -466,6 +470,7 @@ body::before {
 .site-footer__legal {
   margin-top: 0.35rem;
   color: var(--muted);
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -477,6 +482,7 @@ body::before {
 
 .site-footer__nav a {
   color: var(--ink);
+  font-size: 0.875rem;
   text-decoration: none;
 }
 

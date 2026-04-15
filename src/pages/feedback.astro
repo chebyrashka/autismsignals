@@ -106,67 +106,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
   </main>
-</BaseLayout>
 
-<script>
-  const form = document.querySelector<HTMLFormElement>('[data-feedback-form]');
-  const activeState = document.querySelector<HTMLElement>('[data-feedback-active]');
-  const successState = document.querySelector<HTMLElement>('[data-feedback-success]');
-  const errorMessage = document.querySelector<HTMLElement>('[data-feedback-error]');
+  <script>
+    const form = document.querySelector<HTMLFormElement>('[data-feedback-form]');
+    const activeState = document.querySelector<HTMLElement>('[data-feedback-active]');
+    const successState = document.querySelector<HTMLElement>('[data-feedback-success]');
+    const errorMessage = document.querySelector<HTMLElement>('[data-feedback-error]');
 
-  const encodeFormData = (formData: FormData) => {
-    const encoded = new URLSearchParams();
+    const encodeFormData = (formData: FormData) => {
+      const encoded = new URLSearchParams();
 
-    formData.forEach((value, key) => {
-      if (typeof value === 'string') {
-        encoded.append(key, value);
-      }
-    });
-
-    return encoded.toString();
-  };
-
-  form?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-    const originalLabel = submitButton?.textContent ?? 'Send feedback';
-
-    if (errorMessage) {
-      errorMessage.hidden = true;
-      errorMessage.textContent = '';
-    }
-
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
-    }
-
-    try {
-      const response = await fetch(window.location.pathname, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeFormData(new FormData(form)),
+      formData.forEach((value, key) => {
+        if (typeof value === 'string') {
+          encoded.append(key, value);
+        }
       });
 
-      if (!response.ok) {
-        throw new Error('Feedback form submission failed.');
-      }
+      return encoded.toString();
+    };
 
-      form.reset();
-      activeState?.setAttribute('hidden', '');
-      successState?.removeAttribute('hidden');
-      successState?.focus();
-    } catch {
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const originalLabel = submitButton?.textContent ?? 'Send feedback';
+
       if (errorMessage) {
-        errorMessage.textContent = 'Something went wrong. Please try sending your feedback again.';
-        errorMessage.hidden = false;
+        errorMessage.hidden = true;
+        errorMessage.textContent = '';
       }
 
       if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = originalLabel;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
       }
-    }
-  });
-</script>
+
+      try {
+        const response = await fetch(window.location.pathname, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeFormData(new FormData(form)),
+        });
+
+        if (!response.ok) {
+          throw new Error('Feedback form submission failed.');
+        }
+
+        form.reset();
+        activeState?.setAttribute('hidden', '');
+        successState?.removeAttribute('hidden');
+        successState?.focus();
+      } catch {
+        if (errorMessage) {
+          errorMessage.textContent = 'Something went wrong. Please try sending your feedback again.';
+          errorMessage.hidden = false;
+        }
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel;
+        }
+      }
+    });
+  </script>
+</BaseLayout>

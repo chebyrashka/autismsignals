@@ -17,9 +17,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p class="eyebrow eyebrow--soft">Privacy policy</p>
         <h1>Privacy</h1>
         <p class="legal-intro">
-          Effective date: April 14, 2026. Autism Signals is designed to keep the self-check
+          Effective date: April 15, 2026. Autism Signals is designed to keep the self-check
           private and lightweight. This page explains what is stored in your browser, what may
-          be measured for site analytics, and what is not collected.
+          be submitted if you use the feedback form, what may be measured for site analytics,
+          and what is not collected.
         </p>
 
         <section class="legal-section">
@@ -27,7 +28,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p>
             Your answers, current progress, and any reflection notes you type into the summary
             field are stored locally in your browser using local storage so you can resume where
-            you left off. This information is not sent to us through the self-check flow.
+            you left off. This information is not sent to us through the self-check flow unless
+            you choose to paste or describe it in the feedback form.
           </p>
           <p>
             If you click <strong>Copy summary</strong>, the summary text is placed on your device
@@ -49,20 +51,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </section>
 
         <section class="legal-section">
+          <h2>Feedback form submissions</h2>
+          <p>
+            If you use the feedback form, we receive the selected topic, your message, any email
+            address you choose to include, and whether you said you are open to a reply. The form
+            also includes anti-spam fields that help filter automated submissions.
+          </p>
+          <p>
+            Feedback submissions are handled by the site’s hosting or form provider, which may
+            process technical request data needed to deliver the form and prevent abuse. The
+            self-check answers and notes stored in your browser are not attached automatically.
+          </p>
+          <p>
+            Please do not include sensitive medical, diagnostic, or identifying information in a
+            feedback message unless you are comfortable sending it through the form.
+          </p>
+        </section>
+
+        <section class="legal-section">
           <h2>Information we do not ask for</h2>
           <p>
             Autism Signals does not require an account, login, or payment to use the core
             experience. We do not ask for your name, phone number, mailing address, or other
-            direct identifiers in order to take the self-check.
+            direct identifiers in order to take the self-check. The feedback form is optional,
+            and the email field is only for people who want a possible reply.
           </p>
         </section>
 
         <section class="legal-section">
           <h2>Service providers and hosting</h2>
           <p>
-            The site may be hosted by third-party infrastructure providers, and aggregate
-            analytics may be processed by a separate analytics provider if analytics are enabled.
-            Those providers may process technical request data needed to deliver the website.
+            The site may be hosted by third-party infrastructure providers. Feedback submissions
+            may be processed by the hosting or form provider, and aggregate analytics may be
+            processed by a separate analytics provider if analytics are enabled. Those providers
+            may process technical request data needed to deliver the website, forms, and related
+            services.
           </p>
         </section>
 
@@ -80,7 +103,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             You can clear locally stored progress by using <strong>Start over</strong> inside the
             experience or by clearing site data in your browser settings. You can also avoid
             leaving notes in the text area if you prefer not to store them locally on your
-            device.
+            device. You can use the feedback form without including an email address, or avoid the
+            feedback form entirely if you do not want to send a message through the form provider.
           </p>
         </section>
 

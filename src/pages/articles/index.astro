@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((left, right) => right.data.pubDate.valueOf() - left.data.pubDate.valueOf());
+
+const featured = articles.find((article) => article.data.featured) ?? articles[0];
+const rest = articles.filter((article) => article.id !== featured?.id);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+---
+
+<BaseLayout
+  title="Articles | Autism Signals"
+  description="Adult-focused articles on masking, sensory patterns, self-checks, and thoughtful autism-related reflection."
+  noindex={true}
+>
+  <main class="page-shell content-shell">
+    <section class="content-hero">
+      <p class="eyebrow eyebrow--soft">Articles</p>
+      <h1>Background, language, and practical reflection tools.</h1>
+      <p class="content-intro">
+        This section is designed to become the long-form side of Autism Signals: articles that
+        help people think more clearly about masking, sensory patterns, social recovery, and
+        how to use reflection tools without over-reading them.
+      </p>
+      <p class="content-copy">
+        If recommendations or affiliate links are added later, they should be clearly disclosed
+        and kept secondary to the usefulness of the article itself.
+      </p>
+    </section>
+
+    {featured && (
+      <section class="feature-link feature-link--article">
+        <div>
+          <p class="eyebrow eyebrow--soft">Featured article</p>
+          <h2>{featured.data.title}</h2>
+          <p>{featured.data.description}</p>
+          <div class="article-meta">
+            <span>{formatDate(featured.data.pubDate)}</span>
+            {featured.data.readingTime && <span>{featured.data.readingTime}</span>}
+          </div>
+        </div>
+        <a class="button-link button-link--primary" href={`/articles/${featured.id}/`}>Read article</a>
+      </section>
+    )}
+
+    <section class="article-grid">
+      {rest.map((article) => (
+        <a class="article-card" href={`/articles/${article.id}/`}>
+          <div class="article-card__content">
+            <div class="article-meta">
+              <span>{formatDate(article.data.pubDate)}</span>
+              {article.data.readingTime && <span>{article.data.readingTime}</span>}
+            </div>
+            <strong>{article.data.title}</strong>
+            <p>{article.data.description}</p>
+          </div>
+          <div class="tag-row">
+            {article.data.tags.map((tag) => (
+              <span class="tag-chip">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </section>
+  </main>
+</BaseLayout>

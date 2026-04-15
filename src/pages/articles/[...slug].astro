@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+---
+
+<BaseLayout title={`${article.data.title} | Autism Signals`} description={article.data.description} noindex={true}>
+  <main class="page-shell content-shell">
+    <article class="prose-card">
+      <a class="legal-back" href="/articles/">
+        <span aria-hidden="true">←</span>
+        <span>Back to articles</span>
+      </a>
+
+      <p class="eyebrow eyebrow--soft">Article</p>
+      <h1>{article.data.title}</h1>
+      <p class="content-intro">{article.data.description}</p>
+
+      <div class="article-meta article-meta--hero">
+        <span>{formatDate(article.data.pubDate)}</span>
+        {article.data.readingTime && <span>{article.data.readingTime}</span>}
+        <span>{article.data.author}</span>
+      </div>
+
+      {article.data.tags.length > 0 && (
+        <div class="tag-row tag-row--article">
+          {article.data.tags.map((tag: string) => (
+            <span class="tag-chip">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      {article.data.affiliateDisclosure && (
+        <p class="support-note">
+          Disclosure: this article includes clearly labeled affiliate links.
+        </p>
+      )}
+
+      <div class="article-prose">
+        <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Feedback | Autism Signals"
+  description="Send product feedback, wording suggestions, article ideas, or bugs to Autism Signals through a low-friction feedback form."
+>
+  <main class="page-shell content-shell">
+    <section class="content-hero">
+      <p class="eyebrow eyebrow--soft">Feedback</p>
+      <h1>Tell us what you think.</h1>
+      <p class="content-intro">
+        Autism Signals is still growing, and real feedback helps make it clearer, calmer, and
+        more useful for adults exploring their own patterns.
+      </p>
+    </section>
+
+    <section class="feedback-layout">
+      <div class="content-card">
+        <p class="eyebrow eyebrow--soft">What helps</p>
+        <h2>Every thoughtful note helps shape the site.</h2>
+        <div class="content-stack">
+          <p>Tell us if a question felt unclear, a result felt off, or a page did not work the way you expected.</p>
+          <p>Article ideas, wording suggestions, accessibility notes, and mobile layout issues are all useful.</p>
+          <p>If you want a possible reply, include your email. Otherwise, you can leave it blank.</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <p class="eyebrow eyebrow--soft">Feedback form</p>
+        <h2>What should we improve?</h2>
+
+        <form
+          class="feedback-form"
+          name="site-feedback"
+          method="POST"
+          action="/feedback/success/"
+          data-netlify="true"
+          netlify-honeypot="company"
+        >
+          <input type="hidden" name="form-name" value="site-feedback" />
+
+          <p class="visually-hidden">
+            <label>
+              Don’t fill this out if you’re human:
+              <input name="company" />
+            </label>
+          </p>
+
+          <div class="form-field">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option>General feedback</option>
+              <option>Bug or broken flow</option>
+              <option>Question wording</option>
+              <option>Results clarity</option>
+              <option>Article idea</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              required
+              placeholder="Tell us what you noticed, what you liked, or what would make this more useful."
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email (optional)</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="only if you want a reply"
+            />
+          </div>
+
+          <label class="checkbox-field">
+            <input type="checkbox" name="okay_to_reply" value="yes" />
+            <span>I’m open to a reply if I included my email.</span>
+          </label>
+
+          <button class="button-link button-link--primary feedback-form__submit" type="submit">Send feedback</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

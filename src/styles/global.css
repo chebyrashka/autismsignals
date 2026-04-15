@@ -505,6 +505,31 @@ body::before {
   box-shadow: none;
 }
 
+.feedback-form__error {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  background: rgba(197, 127, 68, 0.1);
+  color: #6b4a2b;
+  line-height: 1.55;
+}
+
+.feedback-success {
+  display: grid;
+  justify-items: start;
+  gap: 0.95rem;
+}
+
+.feedback-success h2,
+.feedback-success p {
+  margin: 0;
+}
+
+.feedback-success p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .form-field {
   display: grid;
   gap: 0.45rem;

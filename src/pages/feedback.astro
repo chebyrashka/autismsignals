@@ -142,7 +142,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
 
       try {
-        const response = await fetch(window.location.pathname, {
+        const response = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encodeFormData(new FormData(form)),
